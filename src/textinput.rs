@@ -66,7 +66,6 @@ where
     F: Fn(&T),
 {
     fn event(&mut self, ctx: &mut EventCtx, event: &druid::Event, data: &mut T, env: &druid::Env) {
-        println!("Event");
         self.widget.event(ctx, event, data, env);
     }
     fn lifecycle(
@@ -76,11 +75,9 @@ where
         data: &T,
         env: &druid::Env,
     ) {
-        println!("Lifecycle");
         self.widget.lifecycle(ctx, event, data, env);
     }
     fn update(&mut self, ctx: &mut UpdateCtx, old_data: &T, data: &T, env: &druid::Env) {
-        println!("Update");
         let f = &self.onupdate;
         f(data);
         self.widget.update(ctx, old_data, data, env);
